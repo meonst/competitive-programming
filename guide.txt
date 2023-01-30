@@ -1,0 +1,5 @@
+download and extract from https://winlibs.com/
+move extracted file to c:
+환경 변수 추가
+
+cph 설치
