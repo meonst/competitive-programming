@@ -1,2 +1,2 @@
-*.json
-*.prob
+.cph/
+.vscode/
