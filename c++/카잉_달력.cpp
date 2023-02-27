@@ -24,26 +24,22 @@ int main()
     int T, M, N, x, y;
     int a, b, m;
     cin >> T;
-    for (int i =  0; i < T; i++)
+    for (int i = 0; i < T; i++)
     {
         cin >> M >> N >> x >> y;
-        m = M / gcd(M, N);
-        n = N / gcd(M, N);
-        for (a = 0; a < M; a++)
+        int years = x;
+        while (years <= lcm(M, N))
         {
-            if (a * n % M == x) break;
+            //cout << "1: " << years << ", " << years % N << ", " << y << "\n";
+            int remainder = years % N;
+            if (remainder == 0) remainder = N;
+            if (remainder == y)
+            {
+                break;
+            }
+            years += M;
         }
-        for (b = 0; b < N; b++)
-        {
-            if (b * m % N == y) break;
-        }
-        int LCM = lcm(M, N);
-        cout << a << ", " << b << "\n";
-        int sum = (a * n + b * m) % LCM;
-        if (sum % M == x && sum % N == y)
-            cout << sum << "\n";
-        else
-            cout << -1 << "\n";
+        cout << (years > lcm(M, N) ? -1 : years) << "\n";
     }
     
 
