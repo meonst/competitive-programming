@@ -15,47 +15,14 @@
 #include <numeric>
 #include <algorithm>
 #include <regex>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cassert>
+#include <queue>
 using namespace std;
-
 typedef long long ll;
-ll modulo = 1000;
 
-vector<vector<ll>> matrix_sum(vector<vector<ll>> matrix1, vector<vector<ll>> matrix2)
-{
-    ll row = matrix1.size();
-    ll column = matrix1[0].size();
-
-    vector<vector<ll>> p(row, vector<ll>(column, 0));
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < column; j++)
-        {
-            p[i][j] = (matrix1[i][j] + matrix2[i][j]); // % modulo;
-        }
-    }
-    return p;
-}
-
-vector<vector<ll>> matrix_sum(vector<vector<vector<ll>>> matrix)
-{
-    ll size = matrix.size();
-    ll row = matrix[0].size();
-    ll column = matrix[0][0].size();
-
-    vector<vector<ll>> p(row, vector<ll>(column, 0));
-
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < row; j++)
-        {
-            for (int k = 0; k < column; k++)
-            {
-                p[j][k] += matrix[i][j][k]; // % modulo;
-            }
-        }
-    }
-    return p;
-}
+ll modulo = 1000000007;
 
 vector<vector<ll>> matrix_product(vector<vector<ll>> matrix1, vector<vector<ll>> matrix2)
 {
@@ -112,4 +79,33 @@ void matrix_print(vector<vector<ll>> matrix)
         }
         cout << "\n";
     }
+}
+
+
+int main()
+{
+    ios_base ::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int N, K;
+    cin >> N >> K;
+    vector<vector<ll>> road(N, vector<ll>(N));
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            cin >> road[i][j];
+        }
+    }
+    vector<vector<ll>> answer = matrix_power(road, K);
+    ll ans = 0;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            ans += answer[i][j];
+            ans %= modulo;
+        }
+    }
+    cout << ans;
 }

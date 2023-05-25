@@ -40,14 +40,32 @@ int main()
     }
     else  // 평행
     {
+        //cout << C1 << ", " << C2 << ", " << B1 << ", " << B2 << ", " << x << ", " << y << "\n";
         if (C1 * B2 == B1 * C2) // 동일 선분
         {
+            int minX1 = min(x1, x2);
+            int maxX1 = max(x1, x2);
+            int minX2 = min(x3, x4);
+            int maxX2 = max(x3, x4);
+                        
+            int minY1 = min(y1, y2);
+            int maxY1 = max(y1, y2);
+            int minY2 = min(y3, y4);
+            int maxY2 = max(y3, y4);
+
             if (
-                x == 0 && y == 0
-            )
-            {
+                    (
+                        (minX2 <= minX1 && minX1 <= maxX2) ||
+                        (minX2 <= maxX1 && maxX1 <= maxX2) ||
+                        (minX1 <= minX2 && minX2 <= maxX1) ||
+                        (minX1 <= maxX2 && maxX2 <= maxX1)) &&
+                    (
+                        (minY2 <= minY1 && minY1 <= maxY2) ||
+                        (minY2 <= maxY1 && maxY1 <= maxY2) ||
+                        (minY1 <= minY2 && minY2 <= maxY1) ||
+                        (minY1 <= maxY2 && maxY2 <= maxY1))
+                )
                 intersect = true;
-            }
         }
     }
     cout << intersect ? 1 : 0;

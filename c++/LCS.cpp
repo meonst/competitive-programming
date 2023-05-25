@@ -18,26 +18,26 @@ using namespace std;
 
 string first;
 string second;
-vector<vector<int>> max(1000, vector<int>(1000, -1));
-// max[i][j] denotes 
-// max[i][j] is the length of the subsequence ending with first[i] and second[j]
+vector<vector<int>> maximum(1000, vector<int>(1000, -1));
+// maximum[i][j] denotes 
+// maximum[i][j] is the length of the subsequence ending with first[i] and second[j]
 // by definition first[i] == second[j]
 
 int longest = 0;
 
-int get_max(int i, int j)
+int get_maximum(int i, int j)
 {
-    if (max[i][j] == -1)
+    if (maximum[i][j] == -1)
     {
         if (i == 0 || j == 0)
         {
             if (first[i] == second[j])
             {
-                max[i][j] = 1;
+                maximum[i][j] = 1;
             }
             else 
             {
-                max[i][j] = 0;
+                maximum[i][j] = 0;
             }
         }
         else
@@ -47,7 +47,7 @@ int get_max(int i, int j)
     }
     else
     {
-        return max[i][j];
+        return maximum[i][j];
     }
 }
 
@@ -64,7 +64,7 @@ int main()
     {
         for (int j = 0; j < second.length(); j++)
         {
-            longest = max(longest, get_max(i, j));
+            longest = max(longest, get_maximum(i, j));
         }
     }
 

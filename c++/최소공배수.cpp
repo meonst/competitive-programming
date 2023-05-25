@@ -1,31 +1,14 @@
-#include <string>
-#include <iomanip>
-#include <utility>
-#include <iostream>
-#include <stdexcept>
-#include <cmath>
-#include <stdint.h>
-#include <inttypes.h>
-#include <iostream>
-#include <algorithm>
-#include <cstring>
-#include <vector>
-#include <map>
-#include <unordered_map>
-#include <numeric>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
 int main()
 {
-    ios_base :: sync_with_stdio(false);
+    ios_base ::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int T, a, b;
-    cin >> T;
-    for (int i = 0; i < T; i++)
-    {
-        cin >> a >> b;
-        cout << lcm(a, b) << "\n";
-    }
+    ll A, B;
+    cin >> A >> B;
+    cout << A * B / gcd(A, B);
 }
+

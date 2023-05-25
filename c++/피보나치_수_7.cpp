@@ -15,52 +15,19 @@
 #include <numeric>
 #include <algorithm>
 #include <regex>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cassert>
+#include <queue>
 using namespace std;
-
 typedef long long ll;
-ll modulo = 1000;
+ll modulo = 1000000007;
 
-vector<vector<ll>> matrix_sum(vector<vector<ll>> matrix1, vector<vector<ll>> matrix2)
-{
-    ll row = matrix1.size();
-    ll column = matrix1[0].size();
-
-    vector<vector<ll>> p(row, vector<ll>(column, 0));
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < column; j++)
-        {
-            p[i][j] = (matrix1[i][j] + matrix2[i][j]); // % modulo;
-        }
-    }
-    return p;
-}
-
-vector<vector<ll>> matrix_sum(vector<vector<vector<ll>>> matrix)
-{
-    ll size = matrix.size();
-    ll row = matrix[0].size();
-    ll column = matrix[0][0].size();
-
-    vector<vector<ll>> p(row, vector<ll>(column, 0));
-
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < row; j++)
-        {
-            for (int k = 0; k < column; k++)
-            {
-                p[j][k] += matrix[i][j][k]; // % modulo;
-            }
-        }
-    }
-    return p;
-}
 
 vector<vector<ll>> matrix_product(vector<vector<ll>> matrix1, vector<vector<ll>> matrix2)
 {
-    ll common = matrix1[0].size();
-    ll row = matrix1.size();
+    ll common = matrix1.size();
+    ll row = matrix1[0].size();
     ll column = matrix2.size();
     vector<vector<ll>> p(row, vector<ll>(column, 0));
     for (int i = 0; i < row; i++)
@@ -101,7 +68,6 @@ vector<vector<ll>> matrix_power(vector<vector<ll>> matrix, ll n)
         return matrix_product(matrix_square(matrix_power(matrix, n / 2)), matrix);
     }
 }
-
 void matrix_print(vector<vector<ll>> matrix)
 {
     for (int i = 0; i < matrix.size(); i++)
@@ -111,5 +77,25 @@ void matrix_print(vector<vector<ll>> matrix)
             cout << matrix[i][j] << " ";
         }
         cout << "\n";
+    }
+}
+int main()
+{
+    ios_base ::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    ll n;
+    cin >> n;
+    // cout << "n: " << n << "\n";
+    vector<vector<ll>> F{{1, 1}, {0, 0}};
+    vector<vector<ll>> p{{0, 1}, {1, 1}};
+    //matrix_print(F);
+    //matrix_print(matrix_power(p, n));
+    if (n == 0) cout << 0;
+    else if (n == 1) cout << 1;
+    else
+    {
+        vector<vector<ll>> answer = matrix_product(F, matrix_power(p, n - 1));
+        cout << answer[0][0];
     }
 }
