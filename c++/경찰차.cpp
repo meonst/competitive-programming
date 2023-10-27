@@ -1,24 +1,4 @@
-#include <string>
-#include <iomanip>
-#include <utility>
-#include <iostream>
-#include <stdexcept>
-#include <cmath>
-#include <stdint.h>
-#include <inttypes.h>
-#include <iostream>
-#include <algorithm>
-#include <cstring>
-#include <vector>
-#include <map>
-#include <unordered_map>
-#include <numeric>
-#include <algorithm>
-#include <regex>
-#include <stdio.h>
-#include <stdlib.h>
-#include <cassert>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 
@@ -29,7 +9,10 @@ int main()
     cout.tie(NULL);
     int N, W;
     cin >> N >> W;
-    
-    
+    for (int i = 0; i < W; i++)
+    {
+        int x, y;
+        cin >> x >> y;
 
+    }
 }

@@ -23,7 +23,7 @@ using namespace std;
 typedef long long ll;
 
 vector<vector<pair<int, int>>> routes;
-int V, E, K;
+int V, E;
 
 vector<ll> dijkstra(int start)
 {

@@ -1,5 +1,16 @@
 download and extract from https://winlibs.com/
 move extracted file to c:
+
+
 환경 변수 추가
+
+1. 시스템 환경 변수 편집
+2. 환경 변수
+3. 시스템 변수
+4. 변수 "Path" 편집
+5. 새로 만들기 "C:\mingw64\bin"
+
+
+
 
 cph 설치

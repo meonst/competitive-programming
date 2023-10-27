@@ -7,4 +7,14 @@ int main()
     ios_base ::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+    int N;
+    cin >> N;
+
+    string a;
+    getline(cin, a);
+    for (int i = 0; i < N; i++)
+    {
+        getline(cin, a);
+        cout << i + 1 << ". " << a << "\n";
+    }
 }
